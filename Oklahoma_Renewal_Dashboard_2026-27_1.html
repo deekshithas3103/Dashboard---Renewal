@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oklahoma Renewal Analysis · SY 2026–27 Strategic Plan</title>
+<style>
+  :root {
+    --ink: #1f2937;
+    --text: #374151;
+    --muted: #6b7280;
+    --light: #9ca3af;
+    --bg: #f9fafb;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+
+    --primary: #1e40af;
+    --primary-light: #dbeafe;
+
+    --success: #15803d;
+    --success-light: #dcfce7;
+
+    --warning: #b45309;
+    --warning-light: #fef3c7;
+
+    --danger: #b91c1c;
+    --danger-light: #fee2e2;
+
+    --neutral: #4b5563;
+    --neutral-light: #f3f4f6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* ============= NAVIGATION ============= */
+  .nav-bar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-bar .brand {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .nav-bar .brand span {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .nav-bar .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+  .nav-bar .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .nav-bar .nav-links a:hover { color: var(--primary); }
+  .nav-bar .meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ============= HEADER ============= */
+  .header {
+    background: var(--card);
+    padding: 48px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .header .eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+
+  /* KPI cards in header */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .kpi-card .kpi-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .kpi-card .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .kpi-card .kpi-sub {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .kpi-card.danger { border-left: 4px solid var(--danger); }
+  .kpi-card.success { border-left: 4px solid var(--success); }
+  .kpi-card.warning { border-left: 4px solid var(--warning); }
+  .kpi-card.primary { border-left: 4px solid var(--primary); }
+
+  /* ============= SECTIONS ============= */
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .section-header .section-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .section-header p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 800px;
+    margin-top: 12px;
+  }
+
+  /* ============= STATS ROW ============= */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .stat-card .value .pct {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .stat-card .desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .stat-card.success .value { color: var(--success); }
+  .stat-card.danger .value { color: var(--danger); }
+  .stat-card.warning .value { color: var(--warning); }
+
+  /* ============= CHARTS ============= */
+  .chart-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .chart-grid-2col {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* Stacked bars */
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: var(--text);
+    flex-wrap: wrap;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+
+  .stack-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 50px;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  .stack-row .row-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .stack-bar {
+    height: 32px;
+    display: flex;
+    background: var(--neutral-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .stack-bar .seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    transition: width 0.8s ease;
+    cursor: pointer;
+  }
+  .stack-bar .seg.renewed { background: var(--success); }
+  .stack-bar .seg.not-renewing { background: var(--danger); }
+  .stack-bar .seg.no-response { background: var(--warning); }
+  .stack-bar .seg.in-conv { background: var(--neutral); }
+  .stack-row .row-total {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+  }
+
+  /* Donut */
+  .donut-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  .donut-stats {
+    margin-top: 12px;
+  }
+  .donut-stats .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 13px;
+  }
+  .donut-stats .row:last-child { border-bottom: none; }
+  .donut-stats .label-cell { display: flex; align-items: center; gap: 8px; }
+  .donut-stats .label-cell strong { font-weight: 600; color: var(--ink); }
+  .donut-stats .val-cell { font-weight: 600; }
+  .donut-stats .val-cell .muted-val { color: var(--muted); font-weight: 400; }
+
+  /* Data tables */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.data-table th {
+    text-align: left;
+    padding: 12px 10px;
+    background: var(--neutral-light);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table.data-table th.num { text-align: right; }
+  table.data-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  table.data-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.data-table tr:last-child td { border-bottom: none; }
+  table.data-table tr.total-row {
+    background: var(--bg);
+    font-weight: 600;
+  }
+  table.data-table tr.total-row td {
+    border-top: 2px solid var(--border-strong);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  td.tier-name { font-weight: 600; color: var(--ink); }
+  td.success-val { color: var(--success); font-weight: 600; }
+  td.danger-val { color: var(--danger); font-weight: 600; }
+
+  /* Callout box */
+  .callout {
+    border-left: 4px solid var(--primary);
+    background: var(--primary-light);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .callout strong { color: var(--primary); }
+  .callout.warning {
+    border-color: var(--warning);
+    background: var(--warning-light);
+  }
+  .callout.warning strong { color: var(--warning); }
+  .callout.danger {
+    border-color: var(--danger);
+    background: var(--danger-light);
+  }
+  .callout.danger strong { color: var(--danger); }
+
+  /* Observation cards (2-col grid) */
+  .observations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .obs-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .obs-card .obs-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .obs-card .obs-tag.win {
+    background: var(--success-light);
+    color: var(--success);
+  }
+  .obs-card .obs-tag.concern {
+    background: var(--danger-light);
+    color: var(--danger);
+  }
+  .obs-card .obs-tag.signal {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .obs-card .obs-tag.watch {
+    background: var(--warning-light);
+    color: var(--warning);
+  }
+  .obs-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .obs-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .obs-card .obs-stat {
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-strong);
+    margin-top: 10px;
+  }
+
+  /* Month timeline */
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .month-cell {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 8px;
+    text-align: center;
+    background: var(--card);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .month-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .month-cell .m-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .month-cell .m-count {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 6px;
+    color: var(--ink);
+  }
+  .month-cell.has-data {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+  .month-cell.has-data .m-count { color: var(--primary); }
+  .month-cell.zero .m-count { color: var(--light); font-weight: 400; }
+
+  /* Red flag block */
+  .alert-block {
+    background: var(--ink);
+    color: white;
+    padding: 32px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .alert-block .alert-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fca5a5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .alert-block .alert-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--danger);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .alert-block h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+  .alert-block .alert-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .alert-block .alert-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+  }
+  .alert-block .alert-stats .num {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fca5a5;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .alert-block .alert-stats .num.ok { color: #86efac; }
+  .alert-block .alert-stats .lbl {
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Strategy section */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .strategy-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+  }
+  .strategy-card .strat-num {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .strategy-card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .strategy-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .strategy-card .stat-tag {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-strong);
+  }
+
+  .goal-block {
+    background: var(--success-light);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .goal-block .goal-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--success);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .goal-block .goal-text {
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .goal-block .goal-text strong {
+    color: var(--success);
+    font-weight: 700;
+  }
+
+  footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tooltip {
+    position: absolute;
+    background: var(--ink);
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 50;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .tooltip.visible { opacity: 1; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .kpi-grid, .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid-2col { grid-template-columns: 1fr; }
+    .observations { grid-template-columns: 1fr; }
+    .month-grid { grid-template-columns: repeat(6, 1fr); }
+    .alert-block .alert-stats { grid-template-columns: repeat(2, 1fr); }
+    .strategy-grid { grid-template-columns: 1fr; }
+    .nav-bar .nav-links { display: none; }
+    .header h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="brand">Lumos Learning <span>· Oklahoma Renewal Analysis</span></div>
+  <div class="nav-links">
+    <a href="#baseline">Baseline</a>
+    <a href="#tiers">Tier Performance</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#risk">Risk</a>
+    <a href="#strategy">Strategy</a>
+  </div>
+  <div class="meta">SY 2026–27 Plan</div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="eyebrow">State Renewal Analysis · Oklahoma</div>
+    <h1>Renewal Analysis &amp; Strategic Plan for SY 2026–27</h1>
+    <p class="subtitle">
+      A two-year view of Oklahoma school customers — what happened in the SY 2024–25 renewal cycle (where StepUp outperformed tedBook by a wide margin), the surprising activation strength of the SY 2025–26 cohort, and the state-specific strategic moves for SY 2026–27.
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card success">
+        <div class="kpi-label">24–25 Renewal Rate</div>
+        <div class="kpi-value">15%</div>
+        <div class="kpi-sub">4 of 26 customers renewed</div>
+      </div>
+      <div class="kpi-card danger">
+        <div class="kpi-label">Explicitly Not Renewing</div>
+        <div class="kpi-value">50%</div>
+        <div class="kpi-sub">13 of 26 · highest of any state</div>
+      </div>
+      <div class="kpi-card success">
+        <div class="kpi-label">25–26 New Customers Rostered</div>
+        <div class="kpi-value">12 of 14</div>
+        <div class="kpi-sub">86% activation — exceptional</div>
+      </div>
+      <div class="kpi-card primary">
+        <div class="kpi-label">25–26 Renewals YTD</div>
+        <div class="kpi-value">14%</div>
+        <div class="kpi-sub">4 of 28 expected · tracking baseline</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 01: BASELINE ============ -->
+<section class="section" id="baseline">
+  <div class="section-header">
+    <span class="section-num">1</span>
+    <h2>The 2024–25 Baseline</h2>
+    <p>Only 4 of 26 Oklahoma customers renewed last year. Half of all customers (13 of 26) explicitly chose not to come back — the highest active-rejection rate of any state in the program.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card success">
+      <div class="label">Renewed</div>
+      <div class="value">4 <span class="pct">15%</span></div>
+      <div class="desc">3 StepUp, 1 tedBook</div>
+    </div>
+    <div class="stat-card danger">
+      <div class="label">Not Renewing</div>
+      <div class="value">13 <span class="pct">50%</span></div>
+      <div class="desc">Explicit declines — dominant mode</div>
+    </div>
+    <div class="stat-card warning">
+      <div class="label">No Response</div>
+      <div class="value">8 <span class="pct">31%</span></div>
+      <div class="desc">Silence</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">In Conversation</div>
+      <div class="value">1 <span class="pct">4%</span></div>
+      <div class="desc">One active dialogue</div>
+    </div>
+  </div>
+
+  <div class="callout danger">
+    <strong>Key finding:</strong> Half of all Oklahoma customers explicitly told us they wouldn't renew — the most pronounced active-rejection pattern in the dataset. This isn't a silence problem or a low-engagement problem. Customers are talking to us and saying no. Understanding why is essential before any 26–27 plan can work.
+  </div>
+
+  <div class="chart-grid-2col">
+    <div class="chart-container">
+      <div class="chart-title">2024–25 Renewal Status Distribution</div>
+      <div class="chart-subtitle">All 26 Oklahoma customers, broken out by final status</div>
+      <div class="legend">
+        <span><span class="swatch" style="background: var(--success)"></span>Renewed</span>
+        <span><span class="swatch" style="background: var(--danger)"></span>Not Renewing</span>
+        <span><span class="swatch" style="background: var(--warning)"></span>No Response</span>
+        <span><span class="swatch" style="background: var(--neutral)"></span>In Conversation</span>
+      </div>
+      <div id="statusStack"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Overall Status Breakdown</div>
+      <div class="chart-subtitle">26 customers total</div>
+      <div class="donut-wrap" id="statusDonut"></div>
+      <div class="donut-stats">
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--success); display:inline-block; width:11px; height:11px;"></span><strong>Renewed</strong></div>
+          <div class="val-cell">4 · <span class="muted-val">15%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--danger); display:inline-block; width:11px; height:11px;"></span><strong>Not Renewing</strong></div>
+          <div class="val-cell">13 · <span class="muted-val">50%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--warning); display:inline-block; width:11px; height:11px;"></span><strong>No Response</strong></div>
+          <div class="val-cell">8 · <span class="muted-val">31%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--neutral); display:inline-block; width:11px; height:11px;"></span><strong>In Conversation</strong></div>
+          <div class="val-cell">1 · <span class="muted-val">4%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 02: TIERS ============ -->
+<section class="section" id="tiers">
+  <div class="section-header">
+    <span class="section-num">2</span>
+    <h2>Product Tier Performance</h2>
+    <p>The Oklahoma tier story is striking — StepUp dramatically outperformed tedBook, with a renewal rate more than 4× higher. This is the inverse of the national pattern.</p>
+  </div>
+
+  <div class="chart-grid-2col">
+    <div class="chart-container">
+      <div class="chart-title">Renewal Status by Product Tier</div>
+      <div class="chart-subtitle">Distribution of renewal outcomes within each tier</div>
+      <div class="legend">
+        <span><span class="swatch" style="background: var(--success)"></span>Renewed</span>
+        <span><span class="swatch" style="background: var(--danger)"></span>Not Renewing</span>
+        <span><span class="swatch" style="background: var(--warning)"></span>No Response</span>
+      </div>
+      <div id="tierStack"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Renewal Rate by Tier</div>
+      <div class="chart-subtitle">SY 2024–25 outcomes</div>
+      <table class="data-table" style="margin-top: 12px;">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th class="num">Total</th>
+            <th class="num">Renewed</th>
+            <th class="num">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">tedBook</td>
+            <td class="num">13</td>
+            <td class="num danger-val">1</td>
+            <td class="num danger-val">7.7%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">StepUp</td>
+            <td class="num">9</td>
+            <td class="num success-val">3</td>
+            <td class="num success-val">33.3%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">SLH</td>
+            <td class="num">3</td>
+            <td class="num danger-val">0</td>
+            <td class="num danger-val">0.0%</td>
+          </tr>
+          <tr class="total-row">
+            <td>Overall</td>
+            <td class="num">26</td>
+            <td class="num">4</td>
+            <td class="num">15.4%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="observations">
+    <div class="obs-card">
+      <span class="obs-tag win">Bright Spot</span>
+      <h3>StepUp is the strongest tier in Oklahoma</h3>
+      <p>3 of 9 StepUp customers renewed — a 33% rate, more than double the state average. This is the inverse of what we see nationally and in other states, where tedBook tends to lead. Something about the Oklahoma market favors the Online product, and that signal is worth pursuing.</p>
+      <div class="obs-stat">StepUp Oklahoma: 33.3% · National StepUp: tracks behind tedBook</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag concern">Major Concern</span>
+      <h3>tedBook is broken in Oklahoma</h3>
+      <p>13 tedBook customers, only 1 renewed — a 7.7% rate. 9 of 13 (69%) explicitly declined. This is the worst tedBook performance in the dataset by a significant margin. Whatever's wrong, it's not a national product issue — it's an Oklahoma-specific mismatch.</p>
+      <div class="obs-stat">tedBook OK: 7.7% renewal · 69% explicit non-renewal · Worst in dataset</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag concern">Headline</span>
+      <h3>Half of all customers explicitly leave</h3>
+      <p>13 of 26 (50%) Oklahoma customers explicitly chose not to renew. The combination of high tedBook decline rate plus high overall decline rate suggests a structural issue — possibly tied to Oklahoma state assessment requirements, district purchasing cycles, or competitive products dominant in the state.</p>
+      <div class="obs-stat">50% explicit non-renewal · The highest active-rejection rate in the dataset</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag signal">Renewal Pattern</span>
+      <h3>Renewals concentrated Jan–Feb</h3>
+      <p>3 of 4 Oklahoma renewals happened in January or February — distinctly different from other states where Aug back-to-school dominates. Oklahoma renewals appear tied to mid-year district planning cycles. The August window underperformed (0 renewals from 9 customers).</p>
+      <div class="obs-stat">Jan–Feb: 75% of renewals · Jul–Aug: 0 renewals despite 4 customers in window</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 03: PIPELINE ============ -->
+<section class="section" id="pipeline">
+  <div class="section-header">
+    <span class="section-num">3</span>
+    <h2>SY 2025–26 Pipeline · Current State</h2>
+    <p>Oklahoma's 25–26 activation story is the brightest in the dataset. 14 new customers acquired, 12 already rostered, and 11 trained — the operational execution is genuinely strong.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="label">New Customers</div>
+      <div class="value">14</div>
+      <div class="desc">Acquired Jul 2025 – May 2026</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Rostered</div>
+      <div class="value">12 <span class="pct">86%</span></div>
+      <div class="desc">Strongest activation in dataset</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Trained</div>
+      <div class="value">11 <span class="pct">79%</span></div>
+      <div class="desc">Training keeping up with rostering</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Using Platform</div>
+      <div class="value">12 <span class="pct">86%</span></div>
+      <div class="desc">12 customers actively engaged</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Bright spot:</strong> 86% of new Oklahoma customers are already rostered, trained, and using the platform. This is the operational profile we want everywhere. The 26–27 renewal conversation in Oklahoma will be supported by real usage evidence — something we don't have in most other states.
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">New Customer Acquisitions by Month</div>
+    <div class="chart-subtitle">
+      Where the 14 new Oklahoma customers landed in SY 2025–26. The Jan–Feb cluster is particularly notable — 9 of 14 customers (64%) arrived in those two months, and most have been rostered and trained quickly.
+    </div>
+    <div class="month-grid" id="acquisitionTimeline"></div>
+    <div style="font-size: 12px; color: var(--muted); margin-top: 14px;">
+      <strong style="color: var(--ink);">Distribution:</strong> Jul 1 · Sep 1 · Dec 3 · Jan 5 · Feb 4 = 14 total · 12 rostered (86%)
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">SY 2025–26 Renewals — Customers Expected to Renew This Year</div>
+    <div class="chart-subtitle">
+      28 existing Oklahoma customers were expected to renew during SY 2025–26 (14 tedBook + 11 StepUp + 3 SLH). 4 have renewed so far, with StepUp leading at a 27% achieved rate — consistent with last year's pattern of StepUp outperforming.
+    </div>
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; margin-top: 16px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th class="num">Renewed</th>
+            <th class="num">Expected</th>
+            <th class="num">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">tedBook</td>
+            <td class="num danger-val">1</td>
+            <td class="num">14</td>
+            <td class="num danger-val">7.1%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">StepUp</td>
+            <td class="num success-val">3</td>
+            <td class="num">11</td>
+            <td class="num success-val">27.3%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">SLH</td>
+            <td class="num">0</td>
+            <td class="num">3</td>
+            <td class="num danger-val">0.0%</td>
+          </tr>
+          <tr class="total-row">
+            <td>Overall</td>
+            <td class="num">4</td>
+            <td class="num">28</td>
+            <td class="num">14.3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="background: var(--primary-light); border: 1px solid var(--primary); border-radius: 8px; padding: 20px;">
+        <div style="font-size: 36px; font-weight: 700; color: var(--primary); line-height: 1;">14%</div>
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); font-weight: 600; margin-top: 8px;">Current 25–26 Renewal Rate</div>
+        <div style="font-size: 13px; color: var(--text); margin-top: 12px; line-height: 1.5;">
+          Essentially flat vs 15% in 24–25 — but with much stronger activation this year, the 24 still-open renewals have a much better evidence base to draw from.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 04: RISK ============ -->
+<section class="section" id="risk">
+  <div class="section-header">
+    <span class="section-num">4</span>
+    <h2>The Looming Risk for SY 2026–27</h2>
+  </div>
+
+  <div class="alert-block">
+    <div class="alert-label"><span class="alert-dot"></span>Risk Alert · The Oklahoma Paradox</div>
+    <h3>Strong activation, weak retention — we're winning the wrong half of the funnel.</h3>
+    <p class="alert-body">
+      Oklahoma's operational execution in 25–26 is impressive: 86% rostered, 79% trained, 86% using the platform. But last year, 50% of customers still explicitly declined to renew. This combination is unusual and concerning — it suggests the problem isn't engagement or activation. It's something else entirely: product fit, pricing, district policy, or competitive displacement. Strong activation in 25–26 buys us a much better conversation, but only if we identify and address the underlying decline drivers.
+    </p>
+    <div class="alert-stats">
+      <div>
+        <div class="num">13</div>
+        <div class="lbl">Explicit declines in 24–25</div>
+      </div>
+      <div>
+        <div class="num">9</div>
+        <div class="lbl">Of 13 tedBook customers declined</div>
+      </div>
+      <div>
+        <div class="num ok">86%</div>
+        <div class="lbl">25–26 activation rate</div>
+      </div>
+      <div>
+        <div class="num ok">12</div>
+        <div class="lbl">25–26 customers with usage data</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="observations">
+    <div class="obs-card">
+      <span class="obs-tag concern">Critical Gap</span>
+      <h3>tedBook losing 7 of 10 customers — by their choice</h3>
+      <p>The single most important question for Oklahoma is why tedBook fails so badly here. 9 of 13 tedBook customers (69%) explicitly declined renewal. If this pattern continues, the 14 tedBook customers in the 25–26 renewal cohort are predisposed to leave regardless of engagement.</p>
+      <div class="obs-stat">tedBook OK explicit non-renewal: 69% · National average: ~20%</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag win">The Edge We Have</span>
+      <h3>StepUp works in Oklahoma — bet on it</h3>
+      <p>StepUp's 33% renewal in 24–25 plus 8 of 8 rostered in 25–26 makes it the clear winner here. All 8 new StepUp customers are using the platform. When their 11 expected renewals come due, we have real engagement data to anchor the conversation.</p>
+      <div class="obs-stat">StepUp OK: 33% renewal · 100% rostering · 11 renewals expected</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag signal">What History Tells Us</span>
+      <h3>Oklahoma may need a different playbook</h3>
+      <p>The combination of high explicit-decline rate and StepUp-favoring tier pattern suggests something specific about the Oklahoma market — likely tied to state assessment standards, district digital readiness, or local competition. Whatever it is, the answer to "what works elsewhere" may not be "what works here."</p>
+      <div class="obs-stat">Inverse national pattern: StepUp leads, tedBook trails · Worth deeper investigation</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag win">The Opening</span>
+      <h3>This is the strongest 25–26 cohort in the dataset</h3>
+      <p>If we can keep the 12 rostered/trained/using customers engaged through year-end, the 26–27 renewal conversation in Oklahoma will be qualitatively different from past years. Real product proof + state-specific positioning = much higher win rate.</p>
+      <div class="obs-stat">12 of 14 customers have usage evidence by May 2026 — protect this gain</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 05: STRATEGY ============ -->
+<section class="section" id="strategy">
+  <div class="section-header">
+    <span class="section-num">5</span>
+    <h2>SY 2026–27 Strategic Plan</h2>
+    <p>Six moves built around Oklahoma's specific reality: an active-rejection-dominant churn pattern, StepUp outperforming tedBook by 4×, and a strongly-activated 25–26 cohort that's the envy of every other state.</p>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strat-num">1</div>
+      <h4>Make StepUp the default for new OK sales</h4>
+      <p>Oklahoma is the inverse of the national pattern — StepUp renews at 33% here while tedBook trails at 7.7%. For new sales in this state, lead with StepUp instead of tedBook. This is a state-specific positioning decision that goes against our broader strategy, and that's exactly what the data demands.</p>
+      <div class="stat-tag">OK StepUp: 33% renewal · OK tedBook: 7.7% renewal</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">2</div>
+      <h4>Investigate why tedBook fails in Oklahoma</h4>
+      <p>9 of 13 tedBook customers explicitly declined last year — the worst tedBook result in any state. Before renewal conversations open, conduct structured interviews with the 13 tedBook customers (renewed and not). The answers will determine whether to fix, reposition, or sunset tedBook in Oklahoma.</p>
+      <div class="stat-tag">Target: 10+ tedBook interviews by Nov 2025</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">3</div>
+      <h4>Protect the 25–26 activation gains</h4>
+      <p>86% rostered, 79% trained, 86% using — Oklahoma is operationally the strongest state in the dataset. Don't break this. Continue weekly check-ins with the 12 active customers, keep training pipeline running through May, and document usage outcomes for the renewal conversation.</p>
+      <div class="stat-tag">Current: 12 of 14 active · Hold above 80% through SY end</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">4</div>
+      <h4>Win-back campaign for the 13 decliners</h4>
+      <p>Unlike silent customers, the 13 explicit decliners are knowable, reachable, and have shared why they're leaving (or we can ask). Build a structured win-back outreach for SY 26–27 — referencing their stated reasons and offering specific changes. Even a 15% recovery rate adds 2 renewals.</p>
+      <div class="stat-tag">Target: 2 win-backs from 24–25 decline cohort</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">5</div>
+      <h4>Build a Jan–Feb renewal calendar</h4>
+      <p>3 of 4 Oklahoma renewals came in Jan–Feb, not the typical Aug back-to-school window. This matches state district planning cycles. Front-load 26–27 outreach into January and February. Schedule major customer touchpoints in Q3 SY to align with how Oklahoma districts actually buy.</p>
+      <div class="stat-tag">Jan–Feb: 75% of historical OK renewals</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">6</div>
+      <h4>Investigate state-level structural factors</h4>
+      <p>The combination of high explicit decline, inverted tier preference, and Jan–Feb renewal pattern points to something specific about Oklahoma. Likely candidates: OSTP assessment alignment, state-mandated digital tools, or a strong local competitor. Research before designing 26–27 sales motion.</p>
+      <div class="stat-tag">Output: Oklahoma-specific market brief by Dec 2025</div>
+    </div>
+  </div>
+
+  <div class="goal-block">
+    <div class="goal-label">The 26–27 Goal</div>
+    <div class="goal-text">
+      Lift Oklahoma renewal rate from <strong>15% (baseline)</strong> to <strong>40%+ in SY 2026–27</strong> — by pivoting to StepUp-led positioning, addressing tedBook's structural fit issues, and leveraging the strongest activation cohort in the entire program.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Lumos Learning · Oklahoma Renewal Analysis · SY 2026–27 Strategic Plan</div>
+  <div>Internal · Prepared for Strategy Review</div>
+</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const tooltip = document.getElementById('tooltip');
+function showTip(e, html) {
+  tooltip.innerHTML = html;
+  tooltip.classList.add('visible');
+  tooltip.style.left = (e.pageX + 12) + 'px';
+  tooltip.style.top = (e.pageY + 12) + 'px';
+}
+function hideTip() { tooltip.classList.remove('visible'); }
+
+// ===== 24-25 Status Stack =====
+function renderStatusStack() {
+  const container = document.getElementById('statusStack');
+  const data = [{ label: 'Overall', total: 26, renewed: 4, not_renewing: 13, no_response: 8, in_conv: 1 }];
+  let html = '';
+  data.forEach(r => {
+    const t = r.total;
+    const rPct = r.renewed/t*100;
+    const nrPct = r.not_renewing/t*100;
+    const norPct = r.no_response/t*100;
+    const icPct = r.in_conv/t*100;
+    html += `
+      <div class="stack-row">
+        <div class="row-label">${r.label}</div>
+        <div class="stack-bar">
+          <div class="seg renewed" data-w="${rPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'Renewed · ${r.renewed} customers · ${rPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'Renewed · ${r.renewed} customers · ${rPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${rPct > 12 ? r.renewed : ''}</div>
+          <div class="seg not-renewing" data-w="${nrPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'Not Renewing · ${r.not_renewing} customers · ${nrPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'Not Renewing · ${r.not_renewing} customers · ${nrPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${nrPct > 12 ? r.not_renewing : ''}</div>
+          <div class="seg no-response" data-w="${norPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'No Response · ${r.no_response} customers · ${norPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'No Response · ${r.no_response} customers · ${norPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${norPct > 12 ? r.no_response : ''}</div>
+          <div class="seg in-conv" data-w="${icPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'In Conversation · ${r.in_conv} customers')"
+            onmousemove="showTip(event, 'In Conversation · ${r.in_conv} customers')"
+            onmouseleave="hideTip()">${icPct > 12 ? r.in_conv : ''}</div>
+        </div>
+        <div class="row-total">${r.total}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+  setTimeout(() => {
+    container.querySelectorAll('.seg').forEach(s => { s.style.width = s.dataset.w + '%'; });
+  }, 200);
+}
+
+// ===== Donut =====
+function renderDonut() {
+  const total = 26;
+  const renewed = 4, nr = 13, no_resp = 8;
+  const r = 70, cx = 100, cy = 100;
+  const circ = 2 * Math.PI * r;
+  const renewedLen = circ * renewed / total;
+  const norLen = circ * no_resp / total;
+  const nrLen = circ * nr / total;
+
+  const svg = `
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e5e7eb" stroke-width="26"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#15803d" stroke-width="26"
+        stroke-dasharray="${renewedLen} ${circ}" stroke-dashoffset="0" transform="rotate(-90 ${cx} ${cy})"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#b45309" stroke-width="26"
+        stroke-dasharray="${norLen} ${circ}" stroke-dashoffset="${-renewedLen}" transform="rotate(-90 ${cx} ${cy})"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#b91c1c" stroke-width="26"
+        stroke-dasharray="${nrLen} ${circ}" stroke-dashoffset="${-(renewedLen + norLen)}" transform="rotate(-90 ${cx} ${cy})"/>
+      <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" font-weight="700" fill="#1f2937">26</text>
+      <text x="${cx}" y="${cy + 18}" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6b7280" letter-spacing="1px">CUSTOMERS</text>
+    </svg>
+  `;
+  document.getElementById('statusDonut').innerHTML = svg;
+}
+
+// ===== Tier stacks =====
+function renderTierStack() {
+  const container = document.getElementById('tierStack');
+  const data = [
+    { label: 'tedBook', total: 13, renewed: 1, not_renewing: 9, no_response: 3 },
+    { label: 'StepUp', total: 9, renewed: 3, not_renewing: 2, no_response: 4 },
+    { label: 'SLH', total: 3, renewed: 0, not_renewing: 2, no_response: 1 },
+  ];
+  let html = '';
+  data.forEach(r => {
+    const t = r.total;
+    const rPct = r.renewed/t*100;
+    const nrPct = r.not_renewing/t*100;
+    const norPct = r.no_response/t*100;
+    html += `
+      <div class="stack-row">
+        <div class="row-label">${r.label}</div>
+        <div class="stack-bar">
+          <div class="seg renewed" data-w="${rPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · Renewed ${r.renewed}/${t} · ${rPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · Renewed ${r.renewed}/${t} · ${rPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${rPct > 15 ? r.renewed : ''}</div>
+          <div class="seg not-renewing" data-w="${nrPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · Not Renewing ${r.not_renewing}/${t} · ${nrPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · Not Renewing ${r.not_renewing}/${t} · ${nrPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${nrPct > 15 ? r.not_renewing : ''}</div>
+          <div class="seg no-response" data-w="${norPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · No Response ${r.no_response}/${t} · ${norPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · No Response ${r.no_response}/${t} · ${norPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${norPct > 15 ? r.no_response : ''}</div>
+        </div>
+        <div class="row-total">${r.total}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+  setTimeout(() => {
+    container.querySelectorAll('.seg').forEach(s => { s.style.width = s.dataset.w + '%'; });
+  }, 200);
+}
+
+// ===== Acquisition Timeline =====
+function renderAcquisitionTimeline() {
+  const container = document.getElementById('acquisitionTimeline');
+  const months = [
+    { m: 'Jul', count: 1 }, { m: 'Aug', count: 0 }, { m: 'Sep', count: 1 },
+    { m: 'Oct', count: 0 }, { m: 'Nov', count: 0 }, { m: 'Dec', count: 3 },
+    { m: 'Jan', count: 5 }, { m: 'Feb', count: 4 }, { m: 'Mar', count: 0 },
+    { m: 'Apr', count: 0 }, { m: 'May', count: 0 }, { m: 'Jun', count: 0 },
+  ];
+  let html = '';
+  months.forEach(mo => {
+    const cls = mo.count === 0 ? 'zero' : 'has-data';
+    html += `
+      <div class="month-cell ${cls}"
+        onmouseenter="showTip(event, '${mo.m} 2025–26 · ${mo.count} new customer${mo.count !== 1 ? 's' : ''}')"
+        onmousemove="showTip(event, '${mo.m} 2025–26 · ${mo.count} new customer${mo.count !== 1 ? 's' : ''}')"
+        onmouseleave="hideTip()">
+        <div class="m-label">${mo.m}</div>
+        <div class="m-count">${mo.count}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+}
+
+renderStatusStack();
+renderDonut();
+renderTierStack();
+renderAcquisitionTimeline();
+</script>
+
+</body>
+</html>

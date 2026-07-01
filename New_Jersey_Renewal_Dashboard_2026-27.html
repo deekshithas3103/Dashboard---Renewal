@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Jersey Renewal Analysis · SY 2026–27 Strategic Plan</title>
+<style>
+  :root {
+    --ink: #1f2937;
+    --text: #374151;
+    --muted: #6b7280;
+    --light: #9ca3af;
+    --bg: #f9fafb;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+
+    --primary: #1e40af;
+    --primary-light: #dbeafe;
+
+    --success: #15803d;
+    --success-light: #dcfce7;
+
+    --warning: #b45309;
+    --warning-light: #fef3c7;
+
+    --danger: #b91c1c;
+    --danger-light: #fee2e2;
+
+    --neutral: #4b5563;
+    --neutral-light: #f3f4f6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* ============= NAVIGATION ============= */
+  .nav-bar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-bar .brand {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .nav-bar .brand span {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .nav-bar .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+  .nav-bar .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .nav-bar .nav-links a:hover { color: var(--primary); }
+  .nav-bar .meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ============= HEADER ============= */
+  .header {
+    background: var(--card);
+    padding: 48px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .header .eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+
+  /* KPI cards in header */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .kpi-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .kpi-card .kpi-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .kpi-card .kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .kpi-card .kpi-sub {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .kpi-card.danger { border-left: 4px solid var(--danger); }
+  .kpi-card.success { border-left: 4px solid var(--success); }
+  .kpi-card.warning { border-left: 4px solid var(--warning); }
+  .kpi-card.primary { border-left: 4px solid var(--primary); }
+
+  /* ============= SECTIONS ============= */
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .section-header .section-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .section-header p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 800px;
+    margin-top: 12px;
+  }
+
+  /* ============= STATS ROW ============= */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .stat-card .value .pct {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .stat-card .desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .stat-card.success .value { color: var(--success); }
+  .stat-card.danger .value { color: var(--danger); }
+  .stat-card.warning .value { color: var(--warning); }
+
+  /* ============= CHARTS ============= */
+  .chart-container {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .chart-grid-2col {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* Stacked bars */
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    color: var(--text);
+    flex-wrap: wrap;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+
+  .stack-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 50px;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  .stack-row .row-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .stack-bar {
+    height: 32px;
+    display: flex;
+    background: var(--neutral-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .stack-bar .seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    transition: width 0.8s ease;
+    cursor: pointer;
+  }
+  .stack-bar .seg.renewed { background: var(--success); }
+  .stack-bar .seg.not-renewing { background: var(--danger); }
+  .stack-bar .seg.no-response { background: var(--warning); }
+  .stack-bar .seg.in-conv { background: var(--neutral); }
+  .stack-row .row-total {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--text);
+  }
+
+  /* Donut */
+  .donut-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  .donut-stats {
+    margin-top: 12px;
+  }
+  .donut-stats .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 13px;
+  }
+  .donut-stats .row:last-child { border-bottom: none; }
+  .donut-stats .label-cell { display: flex; align-items: center; gap: 8px; }
+  .donut-stats .label-cell strong { font-weight: 600; color: var(--ink); }
+  .donut-stats .val-cell { font-weight: 600; }
+  .donut-stats .val-cell .muted-val { color: var(--muted); font-weight: 400; }
+
+  /* Data tables */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.data-table th {
+    text-align: left;
+    padding: 12px 10px;
+    background: var(--neutral-light);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table.data-table th.num { text-align: right; }
+  table.data-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  table.data-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.data-table tr:last-child td { border-bottom: none; }
+  table.data-table tr.total-row {
+    background: var(--bg);
+    font-weight: 600;
+  }
+  table.data-table tr.total-row td {
+    border-top: 2px solid var(--border-strong);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  td.tier-name { font-weight: 600; color: var(--ink); }
+  td.success-val { color: var(--success); font-weight: 600; }
+  td.danger-val { color: var(--danger); font-weight: 600; }
+
+  /* Callout box */
+  .callout {
+    border-left: 4px solid var(--primary);
+    background: var(--primary-light);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .callout strong { color: var(--primary); }
+  .callout.warning {
+    border-color: var(--warning);
+    background: var(--warning-light);
+  }
+  .callout.warning strong { color: var(--warning); }
+  .callout.danger {
+    border-color: var(--danger);
+    background: var(--danger-light);
+  }
+  .callout.danger strong { color: var(--danger); }
+
+  /* Observation cards (2-col grid) */
+  .observations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .obs-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .obs-card .obs-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .obs-card .obs-tag.win {
+    background: var(--success-light);
+    color: var(--success);
+  }
+  .obs-card .obs-tag.concern {
+    background: var(--danger-light);
+    color: var(--danger);
+  }
+  .obs-card .obs-tag.signal {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .obs-card .obs-tag.watch {
+    background: var(--warning-light);
+    color: var(--warning);
+  }
+  .obs-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .obs-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .obs-card .obs-stat {
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-strong);
+    margin-top: 10px;
+  }
+
+  /* Month timeline */
+  .month-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .month-cell {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 8px;
+    text-align: center;
+    background: var(--card);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .month-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .month-cell .m-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .month-cell .m-count {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 6px;
+    color: var(--ink);
+  }
+  .month-cell.has-data {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+  .month-cell.has-data .m-count { color: var(--primary); }
+  .month-cell.zero .m-count { color: var(--light); font-weight: 400; }
+
+  /* Red flag block */
+  .alert-block {
+    background: var(--ink);
+    color: white;
+    padding: 32px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+  .alert-block .alert-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fca5a5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .alert-block .alert-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--danger);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .alert-block h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+  .alert-block .alert-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .alert-block .alert-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    border-top: 1px solid #374151;
+    padding-top: 20px;
+  }
+  .alert-block .alert-stats .num {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fca5a5;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+  .alert-block .alert-stats .num.ok { color: #86efac; }
+  .alert-block .alert-stats .lbl {
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Strategy section */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .strategy-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+  }
+  .strategy-card .strat-num {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .strategy-card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .strategy-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .strategy-card .stat-tag {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-strong);
+  }
+
+  .goal-block {
+    background: var(--success-light);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .goal-block .goal-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--success);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .goal-block .goal-text {
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .goal-block .goal-text strong {
+    color: var(--success);
+    font-weight: 700;
+  }
+
+  footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tooltip {
+    position: absolute;
+    background: var(--ink);
+    color: white;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 50;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .tooltip.visible { opacity: 1; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .kpi-grid, .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid-2col { grid-template-columns: 1fr; }
+    .observations { grid-template-columns: 1fr; }
+    .month-grid { grid-template-columns: repeat(6, 1fr); }
+    .alert-block .alert-stats { grid-template-columns: repeat(2, 1fr); }
+    .strategy-grid { grid-template-columns: 1fr; }
+    .nav-bar .nav-links { display: none; }
+    .header h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="brand">Lumos Learning <span>· New Jersey Renewal Analysis</span></div>
+  <div class="nav-links">
+    <a href="#baseline">Baseline</a>
+    <a href="#tiers">Tier Performance</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#risk">Risk</a>
+    <a href="#strategy">Strategy</a>
+  </div>
+  <div class="meta">SY 2026–27 Plan</div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="eyebrow">State Renewal Analysis · New Jersey</div>
+    <h1>Renewal Analysis &amp; Strategic Plan for SY 2026–27</h1>
+    <p class="subtitle">
+      A two-year view of New Jersey school customers — the largest and strongest-performing market in the program. What worked in the SY 2024–25 renewal cycle, how the SY 2025–26 pipeline is scaling, and the moves required to hold and extend our position in SY 2026–27.
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card success">
+        <div class="kpi-label">24–25 Renewal Rate</div>
+        <div class="kpi-value">41%</div>
+        <div class="kpi-sub">35 of 86 · highest in the program</div>
+      </div>
+      <div class="kpi-card warning">
+        <div class="kpi-label">No Response Rate</div>
+        <div class="kpi-value">35%</div>
+        <div class="kpi-sub">30 of 86 · the improvable gap</div>
+      </div>
+      <div class="kpi-card success">
+        <div class="kpi-label">25–26 New Customers Rostered</div>
+        <div class="kpi-value">61 of 90</div>
+        <div class="kpi-sub">68% activation — strong execution</div>
+      </div>
+      <div class="kpi-card primary">
+        <div class="kpi-label">25–26 Renewals YTD</div>
+        <div class="kpi-value">41%</div>
+        <div class="kpi-sub">33 of 81 expected · holding baseline</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 01: BASELINE ============ -->
+<section class="section" id="baseline">
+  <div class="section-header">
+    <span class="section-num">1</span>
+    <h2>The 2024–25 Baseline</h2>
+    <p>35 of 86 New Jersey customers renewed last year — a 41% renewal rate, more than double what we saw in Indiana, Ohio, or Oklahoma. The story here isn't a broken funnel; it's about closing a specific gap.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card success">
+      <div class="label">Renewed</div>
+      <div class="value">35 <span class="pct">41%</span></div>
+      <div class="desc">Strongest state in the dataset</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Not Renewing</div>
+      <div class="value">21 <span class="pct">24%</span></div>
+      <div class="desc">Explicit declines</div>
+    </div>
+    <div class="stat-card warning">
+      <div class="label">No Response</div>
+      <div class="value">30 <span class="pct">35%</span></div>
+      <div class="desc">The largest lever we can pull</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">In Conversation</div>
+      <div class="value">0 <span class="pct">0%</span></div>
+      <div class="desc">No active dialogue</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Key finding:</strong> New Jersey's 41% renewal rate is a proof point that our program can work at scale. But 30 customers went silent — if we had responded to even half of them, the renewal rate could have crossed 55%. Closing the silence gap is the single highest-impact lever in this state.
+  </div>
+
+  <div class="chart-grid-2col">
+    <div class="chart-container">
+      <div class="chart-title">2024–25 Renewal Status Distribution</div>
+      <div class="chart-subtitle">All 86 New Jersey customers, broken out by final status</div>
+      <div class="legend">
+        <span><span class="swatch" style="background: var(--success)"></span>Renewed</span>
+        <span><span class="swatch" style="background: var(--danger)"></span>Not Renewing</span>
+        <span><span class="swatch" style="background: var(--warning)"></span>No Response</span>
+        <span><span class="swatch" style="background: var(--neutral)"></span>In Conversation</span>
+      </div>
+      <div id="statusStack"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Overall Status Breakdown</div>
+      <div class="chart-subtitle">86 customers total</div>
+      <div class="donut-wrap" id="statusDonut"></div>
+      <div class="donut-stats">
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--success); display:inline-block; width:11px; height:11px;"></span><strong>Renewed</strong></div>
+          <div class="val-cell">35 · <span class="muted-val">41%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--warning); display:inline-block; width:11px; height:11px;"></span><strong>No Response</strong></div>
+          <div class="val-cell">30 · <span class="muted-val">35%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--danger); display:inline-block; width:11px; height:11px;"></span><strong>Not Renewing</strong></div>
+          <div class="val-cell">21 · <span class="muted-val">24%</span></div>
+        </div>
+        <div class="row">
+          <div class="label-cell"><span class="swatch" style="background: var(--neutral); display:inline-block; width:11px; height:11px;"></span><strong>In Conversation</strong></div>
+          <div class="val-cell">0 · <span class="muted-val">0%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 02: TIERS ============ -->
+<section class="section" id="tiers">
+  <div class="section-header">
+    <span class="section-num">2</span>
+    <h2>Product Tier Performance</h2>
+    <p>All three tiers renewed in New Jersey, and StepUp leads the pack with 50% renewal — the highest single-tier renewal rate anywhere in the program.</p>
+  </div>
+
+  <div class="chart-grid-2col">
+    <div class="chart-container">
+      <div class="chart-title">Renewal Status by Product Tier</div>
+      <div class="chart-subtitle">Distribution of renewal outcomes within each tier</div>
+      <div class="legend">
+        <span><span class="swatch" style="background: var(--success)"></span>Renewed</span>
+        <span><span class="swatch" style="background: var(--danger)"></span>Not Renewing</span>
+        <span><span class="swatch" style="background: var(--warning)"></span>No Response</span>
+      </div>
+      <div id="tierStack"></div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">Renewal Rate by Tier</div>
+      <div class="chart-subtitle">SY 2024–25 outcomes</div>
+      <table class="data-table" style="margin-top: 12px;">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th class="num">Total</th>
+            <th class="num">Renewed</th>
+            <th class="num">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">tedBook</td>
+            <td class="num">52</td>
+            <td class="num success-val">21</td>
+            <td class="num success-val">40.4%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">StepUp</td>
+            <td class="num">24</td>
+            <td class="num success-val">12</td>
+            <td class="num success-val">50.0%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">SLH</td>
+            <td class="num">10</td>
+            <td class="num danger-val">2</td>
+            <td class="num danger-val">20.0%</td>
+          </tr>
+          <tr class="total-row">
+            <td>Overall</td>
+            <td class="num">86</td>
+            <td class="num">35</td>
+            <td class="num">40.7%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="observations">
+    <div class="obs-card">
+      <span class="obs-tag win">Star Performer</span>
+      <h3>StepUp is renewing at 50% — the highest in the program</h3>
+      <p>12 of 24 StepUp customers in NJ renewed last year. That's not just the best StepUp performance we've seen — it's the best single-tier performance in any state we've analyzed. Only 2 customers actively declined; the other 10 non-renewals were all "no response," meaning there's more upside if we can reach them.</p>
+      <div class="obs-stat">StepUp NJ: 50% renewal · Only 2 explicit declines out of 24</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag win">Solid Backbone</span>
+      <h3>tedBook is the volume anchor at 40%</h3>
+      <p>52 of 86 customers (60% of the NJ cohort) are on tedBook, and 21 of those renewed — a 40% rate. This is materially better than tedBook performance in every other state we've analyzed. Whatever's happening in NJ sales and CS motion for tedBook, it's working.</p>
+      <div class="obs-stat">tedBook NJ: 40.4% renewal · 3x higher than tedBook rate in Oklahoma</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag concern">Weak Spot</span>
+      <h3>SLH lags all other tiers</h3>
+      <p>10 SLH customers, only 2 renewed. 4 explicitly declined and 4 went silent — 80% total loss. This is out of pattern with the rest of the NJ portfolio and warrants investigation. Whatever's working for tedBook and StepUp here isn't translating to SLH.</p>
+      <div class="obs-stat">SLH NJ: 20% renewal · Only tier underperforming state average</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag signal">Pattern</span>
+      <h3>Renewals cluster Aug–Feb, especially February</h3>
+      <p>Peak months: Feb (8 renewals), Nov (6), Aug (4). These are the natural conversation windows in NJ — back-to-school, mid-year planning, and legislative-cycle month. The Feb spike is particularly striking: 8 of 16 customers due that month renewed. Concentrate 26–27 outreach here.</p>
+      <div class="obs-stat">Feb + Nov + Aug: 18 of 35 renewals (51%)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 03: PIPELINE ============ -->
+<section class="section" id="pipeline">
+  <div class="section-header">
+    <span class="section-num">3</span>
+    <h2>SY 2025–26 Pipeline · Current State</h2>
+    <p>New Jersey added 90 new customers this year — the largest cohort in the program. Rostering is running at 68%, training at 63%, and platform usage at 52%. This is what a healthy pipeline looks like.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="label">New Customers</div>
+      <div class="value">90</div>
+      <div class="desc">Acquired Jul 2025 – May 2026</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Rostered</div>
+      <div class="value">61 <span class="pct">68%</span></div>
+      <div class="desc">Strong activation</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Trained</div>
+      <div class="value">57 <span class="pct">63%</span></div>
+      <div class="desc">Training close behind rostering</div>
+    </div>
+    <div class="stat-card success">
+      <div class="label">Using Platform</div>
+      <div class="value">47 <span class="pct">52%</span></div>
+      <div class="desc">Over half actively engaged</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The scale advantage:</strong> New Jersey alone accounts for more new customers this year (90) than Indiana, Ohio, and Oklahoma combined (41). At 68% rostering, we've moved 61 NJ customers onto the platform this year — more than the entire program in some other states. The infrastructure is working here; the goal is to scale it.
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">New Customer Acquisitions by Month</div>
+    <div class="chart-subtitle">
+      Where the 90 new NJ customers landed in SY 2025–26. Distribution is well spread through the year, with a heavy Jan–Feb cluster (35 customers) followed by strong spring activity. The consistency across months suggests a durable sales motion, not a one-time spike.
+    </div>
+    <div class="month-grid" id="acquisitionTimeline"></div>
+    <div style="font-size: 12px; color: var(--muted); margin-top: 14px;">
+      <strong style="color: var(--ink);">Distribution:</strong> Jul 5 · Aug 3 · Sep 9 · Oct 8 · Nov 5 · Dec 8 · Jan 19 · Feb 16 · Mar 5 · Apr 10 · May 2 = 90 total · 61 rostered
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div class="chart-title">SY 2025–26 Renewals — Customers Expected to Renew This Year</div>
+    <div class="chart-subtitle">
+      82 existing NJ customers were expected to renew during SY 2025–26 (50 tedBook + 22 StepUp + 10 SLH). So far, 33 have renewed — tracking at the same 41% rate as last year, but with room to close as remaining renewals come due.
+    </div>
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; margin-top: 16px;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th class="num">Renewed</th>
+            <th class="num">Expected</th>
+            <th class="num">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">tedBook</td>
+            <td class="num success-val">21</td>
+            <td class="num">50</td>
+            <td class="num success-val">42.0%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">StepUp</td>
+            <td class="num success-val">10</td>
+            <td class="num">22</td>
+            <td class="num success-val">45.5%</td>
+          </tr>
+          <tr>
+            <td class="tier-name">SLH</td>
+            <td class="num danger-val">2</td>
+            <td class="num">10</td>
+            <td class="num danger-val">20.0%</td>
+          </tr>
+          <tr class="total-row">
+            <td>Overall</td>
+            <td class="num">33</td>
+            <td class="num">82</td>
+            <td class="num">40.2%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="background: var(--success-light); border: 1px solid var(--success); border-radius: 8px; padding: 20px;">
+        <div style="font-size: 36px; font-weight: 700; color: var(--success); line-height: 1;">40%</div>
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--success); font-weight: 600; margin-top: 8px;">Current 25–26 Renewal Rate</div>
+        <div style="font-size: 13px; color: var(--text); margin-top: 12px; line-height: 1.5;">
+          Tracking essentially flat with 24–25 baseline (41%). 49 renewals still open — the opportunity is to close conversations rather than restart them.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 04: RISK ============ -->
+<section class="section" id="risk">
+  <div class="section-header">
+    <span class="section-num">4</span>
+    <h2>The Looming Risk for SY 2026–27</h2>
+  </div>
+
+  <div class="alert-block">
+    <div class="alert-label"><span class="alert-dot"></span>Opportunity Alert · The Case for Aggressive Targets</div>
+    <h3>NJ is our strongest state — and we're leaving 20+ renewals on the table each year.</h3>
+    <p class="alert-body">
+      Unlike Indiana or Oklahoma, NJ doesn't have a broken funnel — it has a great funnel with specific gaps. Last year, 30 customers went silent. This year, 5 SLH customers are unrostered. And 5 rostered customers are flagged as at-risk. Each of these is knowable, addressable, and worth real money. The risk isn't the state falling apart; the risk is complacency stopping us from scaling what already works.
+    </p>
+    <div class="alert-stats">
+      <div>
+        <div class="num">30</div>
+        <div class="lbl">Silent customers in 24–25</div>
+      </div>
+      <div>
+        <div class="num">5</div>
+        <div class="lbl">SLH new customers unrostered</div>
+      </div>
+      <div>
+        <div class="num">5</div>
+        <div class="lbl">At-risk rostered customers</div>
+      </div>
+      <div>
+        <div class="num ok">49</div>
+        <div class="lbl">Open renewals for 25–26</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="observations">
+    <div class="obs-card">
+      <span class="obs-tag win">The Playbook</span>
+      <h3>StepUp NJ is the template — study it</h3>
+      <p>50% renewal in 24–25, 94% activation in 25–26, 45% renewal rate on this year's cohort so far. Something specific is working with StepUp in New Jersey — sales positioning, CS motion, product-market fit, or all three. Document it. Codify it. Export it to Oklahoma and Ohio where StepUp also shows promise.</p>
+      <div class="obs-stat">StepUp NJ: 94% rostered · 91% trained · 85% using · 45% renewing</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag concern">The Blind Spot</span>
+      <h3>All 5 new SLH customers are unrostered</h3>
+      <p>SLH already underperformed at 20% renewal last year. This year, none of the 5 new SLH customers have been rostered. If we don't intervene, we're on track for a repeat of 24–25 SLH results — and possibly worse. Small cohort, but easy to address.</p>
+      <div class="obs-stat">SLH 25–26: 5 acquired · 0 rostered · 2 of 10 renewals achieved</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag watch">Watch List</span>
+      <h3>5 customers flagged at-risk</h3>
+      <p>Of the 61 rostered customers, 5 have been marked at-risk (3 StepUp, 1 tedBook, 1 pending). These are customers we can still save — they're on the platform but showing early signals of trouble. Immediate CSM intervention on these five should be a priority before Q1 2026.</p>
+      <div class="obs-stat">5 at-risk = potential 5 additional renewals if we intervene now</div>
+    </div>
+
+    <div class="obs-card">
+      <span class="obs-tag signal">The Compounding Effect</span>
+      <h3>NJ is a laboratory for scaling</h3>
+      <p>With 90 new customers this year, NJ has more scale to test operational improvements than any other state. Anything we discover here about closing the no-response gap, converting at-risk customers, or accelerating SLH activation can be applied to smaller markets with immediate impact.</p>
+      <div class="obs-stat">NJ = 90 new customers · IN + OH + OK combined = 41 · NJ is 2.2× the rest</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 05: STRATEGY ============ -->
+<section class="section" id="strategy">
+  <div class="section-header">
+    <span class="section-num">5</span>
+    <h2>SY 2026–27 Strategic Plan</h2>
+    <p>Six moves built around New Jersey's strength: a proven playbook to scale, specific gaps to close, and the market volume to make every improvement meaningful.</p>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strat-num">1</div>
+      <h4>Document and codify the StepUp NJ playbook</h4>
+      <p>50% renewal, 94% activation — StepUp NJ is the most successful state-tier combination in the program. Interview the CSMs, sales reps, and 2–3 top customers driving this. Document the specific motions that work. This becomes the reference playbook we export to other markets.</p>
+      <div class="stat-tag">Target: playbook complete by Nov 2025</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">2</div>
+      <h4>Close the "no response" gap — the biggest lever</h4>
+      <p>30 silent customers in 24–25. Even converting 30% of them would add 9 renewals to the SY count. Structured multi-channel outreach cadence (90/60/30-day), with response rate tracked as a leading indicator. If we could hit 55% renewal here, NJ becomes a benchmark case.</p>
+      <div class="stat-tag">Target: cut "No Response" from 35% to 20% in 26–27</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">3</div>
+      <h4>Roster the 5 SLH customers by January</h4>
+      <p>Small cohort, big signal. All 5 new SLH customers are unrostered — the only complete blind spot in the NJ pipeline. Direct CSM intervention on this cohort: personalized outreach, white-glove onboarding, weekly check-ins. Prevents 26–27 from repeating the 24–25 SLH pattern.</p>
+      <div class="stat-tag">Current: 0 of 5 SLH rostered · Target: 5 of 5 by Jan 2026</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">4</div>
+      <h4>Intervene on the 5 at-risk customers now</h4>
+      <p>5 customers are already flagged at-risk despite being rostered. These are the most reversible losses — early warning signs mean there's still time to save them. Assign a senior CSM to each of the 5, run a 30-day recovery play, and document what works for future use.</p>
+      <div class="stat-tag">5 at-risk customers · Recovery target: 3 of 5 saved by Feb 2026</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">5</div>
+      <h4>Concentrate outreach on Feb, Nov, Aug</h4>
+      <p>NJ renewals concentrate in three months: Feb (8 renewals), Nov (6), Aug (4). Build the 26–27 outreach calendar around these windows. Front-load high-touch conversations 30 days before each, ensure CSM capacity is high in these periods, and treat them as sales-critical months.</p>
+      <div class="stat-tag">Feb + Nov + Aug: 51% of historical NJ renewals</div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strat-num">6</div>
+      <h4>Set an aggressive but reachable target</h4>
+      <p>Most states are climbing from 15–22% renewal to 40%+. NJ is already at 40% and should be aiming for 55%+. With the no-response fix (+9 renewals), at-risk recovery (+3), and SLH activation (+2), the math actually gets us there. Make this the flagship state for 26–27.</p>
+      <div class="stat-tag">Baseline 41% · Target 55% · Gap: 14 renewals across 90+ customers</div>
+    </div>
+  </div>
+
+  <div class="goal-block">
+    <div class="goal-label">The 26–27 Goal</div>
+    <div class="goal-text">
+      Lift New Jersey renewal rate from <strong>41% (baseline)</strong> to <strong>55%+ in SY 2026–27</strong> — by scaling the StepUp playbook, closing the silence gap, and treating NJ as the reference market other states will learn from.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Lumos Learning · New Jersey Renewal Analysis · SY 2026–27 Strategic Plan</div>
+  <div>Internal · Prepared for Strategy Review</div>
+</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const tooltip = document.getElementById('tooltip');
+function showTip(e, html) {
+  tooltip.innerHTML = html;
+  tooltip.classList.add('visible');
+  tooltip.style.left = (e.pageX + 12) + 'px';
+  tooltip.style.top = (e.pageY + 12) + 'px';
+}
+function hideTip() { tooltip.classList.remove('visible'); }
+
+// ===== 24-25 Status Stack =====
+function renderStatusStack() {
+  const container = document.getElementById('statusStack');
+  const data = [{ label: 'Overall', total: 86, renewed: 35, not_renewing: 21, no_response: 30, in_conv: 0 }];
+  let html = '';
+  data.forEach(r => {
+    const t = r.total;
+    const rPct = r.renewed/t*100;
+    const nrPct = r.not_renewing/t*100;
+    const norPct = r.no_response/t*100;
+    const icPct = r.in_conv/t*100;
+    html += `
+      <div class="stack-row">
+        <div class="row-label">${r.label}</div>
+        <div class="stack-bar">
+          <div class="seg renewed" data-w="${rPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'Renewed · ${r.renewed} customers · ${rPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'Renewed · ${r.renewed} customers · ${rPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${rPct > 12 ? r.renewed : ''}</div>
+          <div class="seg not-renewing" data-w="${nrPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'Not Renewing · ${r.not_renewing} customers · ${nrPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'Not Renewing · ${r.not_renewing} customers · ${nrPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${nrPct > 12 ? r.not_renewing : ''}</div>
+          <div class="seg no-response" data-w="${norPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'No Response · ${r.no_response} customers · ${norPct.toFixed(1)}%')"
+            onmousemove="showTip(event, 'No Response · ${r.no_response} customers · ${norPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${norPct > 12 ? r.no_response : ''}</div>
+          <div class="seg in-conv" data-w="${icPct}" style="width: 0%;"
+            onmouseenter="showTip(event, 'In Conversation · ${r.in_conv} customers')"
+            onmousemove="showTip(event, 'In Conversation · ${r.in_conv} customers')"
+            onmouseleave="hideTip()">${icPct > 12 ? r.in_conv : ''}</div>
+        </div>
+        <div class="row-total">${r.total}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+  setTimeout(() => {
+    container.querySelectorAll('.seg').forEach(s => { s.style.width = s.dataset.w + '%'; });
+  }, 200);
+}
+
+// ===== Donut =====
+function renderDonut() {
+  const total = 86;
+  const renewed = 35, nr = 21, no_resp = 30;
+  const r = 70, cx = 100, cy = 100;
+  const circ = 2 * Math.PI * r;
+  const renewedLen = circ * renewed / total;
+  const norLen = circ * no_resp / total;
+  const nrLen = circ * nr / total;
+
+  const svg = `
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e5e7eb" stroke-width="26"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#15803d" stroke-width="26"
+        stroke-dasharray="${renewedLen} ${circ}" stroke-dashoffset="0" transform="rotate(-90 ${cx} ${cy})"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#b45309" stroke-width="26"
+        stroke-dasharray="${norLen} ${circ}" stroke-dashoffset="${-renewedLen}" transform="rotate(-90 ${cx} ${cy})"/>
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#b91c1c" stroke-width="26"
+        stroke-dasharray="${nrLen} ${circ}" stroke-dashoffset="${-(renewedLen + norLen)}" transform="rotate(-90 ${cx} ${cy})"/>
+      <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" font-weight="700" fill="#1f2937">86</text>
+      <text x="${cx}" y="${cy + 18}" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#6b7280" letter-spacing="1px">CUSTOMERS</text>
+    </svg>
+  `;
+  document.getElementById('statusDonut').innerHTML = svg;
+}
+
+// ===== Tier stacks =====
+function renderTierStack() {
+  const container = document.getElementById('tierStack');
+  const data = [
+    { label: 'tedBook', total: 52, renewed: 21, not_renewing: 15, no_response: 17 },
+    { label: 'StepUp', total: 24, renewed: 12, not_renewing: 2, no_response: 10 },
+    { label: 'SLH', total: 10, renewed: 2, not_renewing: 4, no_response: 4 },
+  ];
+  let html = '';
+  data.forEach(r => {
+    const t = r.total;
+    const rPct = r.renewed/t*100;
+    const nrPct = r.not_renewing/t*100;
+    const norPct = r.no_response/t*100;
+    html += `
+      <div class="stack-row">
+        <div class="row-label">${r.label}</div>
+        <div class="stack-bar">
+          <div class="seg renewed" data-w="${rPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · Renewed ${r.renewed}/${t} · ${rPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · Renewed ${r.renewed}/${t} · ${rPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${rPct > 15 ? r.renewed : ''}</div>
+          <div class="seg not-renewing" data-w="${nrPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · Not Renewing ${r.not_renewing}/${t} · ${nrPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · Not Renewing ${r.not_renewing}/${t} · ${nrPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${nrPct > 15 ? r.not_renewing : ''}</div>
+          <div class="seg no-response" data-w="${norPct}" style="width: 0%;"
+            onmouseenter="showTip(event, '${r.label} · No Response ${r.no_response}/${t} · ${norPct.toFixed(1)}%')"
+            onmousemove="showTip(event, '${r.label} · No Response ${r.no_response}/${t} · ${norPct.toFixed(1)}%')"
+            onmouseleave="hideTip()">${norPct > 15 ? r.no_response : ''}</div>
+        </div>
+        <div class="row-total">${r.total}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+  setTimeout(() => {
+    container.querySelectorAll('.seg').forEach(s => { s.style.width = s.dataset.w + '%'; });
+  }, 200);
+}
+
+// ===== Acquisition Timeline =====
+function renderAcquisitionTimeline() {
+  const container = document.getElementById('acquisitionTimeline');
+  const months = [
+    { m: 'Jul', count: 5 }, { m: 'Aug', count: 3 }, { m: 'Sep', count: 9 },
+    { m: 'Oct', count: 8 }, { m: 'Nov', count: 5 }, { m: 'Dec', count: 8 },
+    { m: 'Jan', count: 19 }, { m: 'Feb', count: 16 }, { m: 'Mar', count: 5 },
+    { m: 'Apr', count: 10 }, { m: 'May', count: 2 }, { m: 'Jun', count: 0 },
+  ];
+  let html = '';
+  months.forEach(mo => {
+    const cls = mo.count === 0 ? 'zero' : 'has-data';
+    html += `
+      <div class="month-cell ${cls}"
+        onmouseenter="showTip(event, '${mo.m} 2025–26 · ${mo.count} new customer${mo.count !== 1 ? 's' : ''}')"
+        onmousemove="showTip(event, '${mo.m} 2025–26 · ${mo.count} new customer${mo.count !== 1 ? 's' : ''}')"
+        onmouseleave="hideTip()">
+        <div class="m-label">${mo.m}</div>
+        <div class="m-count">${mo.count}</div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+}
+
+renderStatusStack();
+renderDonut();
+renderTierStack();
+renderAcquisitionTimeline();
+</script>
+
+</body>
+</html>
